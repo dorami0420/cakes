@@ -1,0 +1,10 @@
+<h2>プロフィール編集</h2>
+<%= form_with model: @user do |f| %>
+  <label for="inputLast_name">氏</label>
+  <%= f.text_field :Last_name, autofocus: true, id:"inputLast_name", placeholder:"Last_name"%>
+  
+  <label for="inputFirst_name">名</label>
+  <%= f.text_field :First_name, autofocus: true, id:"inputFirst_name", placeholder:"First_name"%>
+  
+   
+<% end %>

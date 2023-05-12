@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 get "admin/top" => "admin/homes#top", as: "admin_top"
 get "customer/top" => "public/homes#top", as: "public_top"
 
-get 'customers/mypage' => 'public/customers#show'
+get 'customers/mypage' => 'public/customers#show', as: "customers_mypage"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 

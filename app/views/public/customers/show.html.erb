@@ -1,1 +1,25 @@
-<h1>エンドユーザ#マイページ</h1>
+<h1>登録情報</h1>
+
+<%= link_to "Edit", edit_customer_path(customer.id) %>
+
+<p>氏名</p>
+<%= @customer.last_name, first_name %>
+
+
+<p>カナ</p>
+<%= @customer.last_name_kana, first_name_kana %>
+
+<p>郵便番号</p>
+<%= @customer.postal_code %>
+
+
+<p>住所</p>
+<%= @customer.address %>
+
+
+<p>電話番号</p>
+<%= @customer.telephone_number %>
+
+
+<p>メールアドレス</p>
+<%= @customer.email %>
