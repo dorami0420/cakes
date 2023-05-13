@@ -1,6 +1,11 @@
 class Public::CustomersController < ApplicationController
-   @customer = current_end_user
-end
+
+
+
+    def show
+      @customer = current_customer
+
+    end
 
 
  def edit
@@ -9,15 +14,15 @@ end
         redirect_to customer_path(current_user)
       end
  end
- 
+
   def update
       @customer = current_user
-  if @customer.update(customer_params)
-    flash[:notice] = "You have updated user successfully."
-      redirect_to customer_path
-  else
-      render :edit
-  end
+      if @customer.update(customer_params)
+        flash[:notice] = "You have updated user successfully."
+          redirect_to customer_path
+    　else
+          render :edit
+      end
   end
 
 private
@@ -25,3 +30,5 @@ private
   def customer_params
   params.require(:cutomer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number)
   end
+
+end
