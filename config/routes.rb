@@ -9,10 +9,18 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-get "admin/top" => "admin/homes#top", as: "admin_top"
-get "customer/top" => "public/homes#top", as: "public_top"
+namespace :public do
+get "customers/information/edit" => "/customers#edit", as: "customers_edit"
+get 'customers/mypage' => '/customers#show', as: "customers_mypage"
 
-get 'customers/mypage' => 'public/customers#show', as: "customers_mypage"
+resources :cart_items, only: [:index, :update, :destroy, :create]
+end
+
+
+namespace :admin do
+get "admin/top" => "admin/homes#top", as: "admin_top"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
+end
