@@ -1,6 +1,6 @@
 <h1>登録情報</h1>
 
-<%= link_to "Edit", edit_customer_path(@customer.id) %>
+<%= link_to "Edit", public_customers_edit_path(@customer.id) %>
 
 <p>氏名</p>
 <%= @customer.last_name + " " + @customer.first_name %>
