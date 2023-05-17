@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     get "customers/information/edit" => "customers#edit", as: "customers_edit"
     get "customers/mypage" => "customers#show", as: "customers_mypage"
     get "customers/update" => "customers#update"
-    get "customers/confirm" => "customers#confirm"
-    get "customers/update" => "customers#cancel"
+    get "customers/confirm" => "customers#confirm", as: "customer_confirm"
+    get "customers/update" => "customers#cancel", as: "customer_cancel"
 
     resources :cart_items, only: [:index, :update, :destroy, :create]
     get "cart_items/destroy_all" => "/cart_items#destroy_all"
@@ -34,12 +34,13 @@ Rails.application.routes.draw do
     resources :items, expect: [:destroy]
 
     resources :customers, expect: [:new, :destroy, :create]
-
+  end
   #get "orders/:id/show" => "/orders/:id#show", as: "orders_show"
 
 
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  end
+
+
 
 end

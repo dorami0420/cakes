@@ -1,17 +1,26 @@
 class Public::CustomersController < ApplicationController
 
+def cancel
+    @customer = Customer.find(params[:id])
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to  new_customer_registration_path
+end
+
+def confirm
+end
+
+def show
+    @customer = current_customer
+
+end
 
 
-    def show
-      @customer = current_customer
+def edit
+    @customer = current_customer
 
-    end
-
-
- def edit
-     @customer = current_customer
-
- end
+end
 
   def update
       @customer = current_customer
