@@ -15,21 +15,21 @@ Rails.application.routes.draw do
     get "customers/mypage" => "customers#show", as: "customers_mypage"
     get "customers/update" => "customers#update"
     get "customers/confirm" => "customers#confirm", as: "customer_confirm"
-    get "customers/update" => "customers#cancel", as: "customer_cancel"
+    patch "customers/update" => "customers#cancel", as: "customer_cancel"
 
     resources :cart_items, only: [:index, :update, :destroy, :create]
     get "cart_items/destroy_all" => "/cart_items#destroy_all"
 
 
     resources :orders, only: [:index, :show, :new, :create]
-    get "orders/confirm" => "/orders#confirm"
-    get "/orders/thanks" => "/orders#thanks"
+    get "orders/confirm" => "orders#confirm"
+    get "orders/thanks" => "orders#thanks"
 
   end
 
 
   namespace :admin do
-    get "top" => "/homes#top", as: "admin_top"
+    get "top" => "homes#top", as: "top"
 
     resources :items, expect: [:destroy]
 
