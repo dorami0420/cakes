@@ -1,0 +1,10 @@
+<h1>商品一覧</h1>
+
+<% @post_images.each do |post_image| %>
+
+<div>
+  <p>商品名：<%= post_image.name %></p>
+  <%= admin.items.name %>
+  <p>税抜価格：<%= post_image.price %></p>
+</div>
+<% end %>
