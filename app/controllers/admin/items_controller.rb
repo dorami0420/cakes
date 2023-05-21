@@ -11,14 +11,16 @@ class Admin::ItemsController < ApplicationController
     @post_image.save
     redirect_to admin_items_path
   end
+  
   def index
-  end
+   @items = Item.all
 
+  end
   def show
   end
   
   def edit
-      @items = Items.find(params[:id])
+      @items = Item.find(params[:id])
       
   end
   
