@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
   
   
   def new
-    @post_image = PostImage.new
+    @items = Items.new
   end
   
   
