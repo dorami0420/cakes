@@ -1,29 +1,29 @@
 class Admin::ItemsController < ApplicationController
-  
-  
+layout 'admin'
+
   def new
-    @items = Items.new
+    @items = Item.new
   end
-  
-  
+
+
   def create
-    @post_image = PostImage.new(post_image_params)
-    @post_image.save
+    @items = Item.new(item_params)
+    @item.save
     redirect_to admin_items_path
   end
-  
+
   def index
    @items = Item.all
 
   end
   def show
   end
-  
+
   def edit
       @items = Item.find(params[:id])
-      
+
   end
-  
+
   def update
       @amin = admin
   if @admin.update(item_params)
@@ -33,14 +33,14 @@ class Admin::ItemsController < ApplicationController
       render :edit
   end
   end
-  
+
   private
 
   def item_params
-    params.require(:user).permit(:name, :image, :introduction, :price)
+    params.require(:item).permit(:name, :image, :introduction, :price)
   end
-  
-  
-  
-  
+
+
+
+
 end

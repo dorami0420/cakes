@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'post_images/index'
-  end
+ 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions",
   }
@@ -32,6 +30,8 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    get 'post_images/index'
+
     get "top" => "homes#top", as: "top"
 
     resources :items, expect: [:destroy]
