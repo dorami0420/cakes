@@ -1,10 +1,11 @@
 <p>商品詳細</p>
 
-<div>
-  <%= image_tag @post_image.get_image %>
-  <p><%= image_tag 'sample-author1.jpg' %></p>
-  <p>商品名：<%= @post_image.name %></p>
-  <p>商品説明：<%= @post_image.introduction %></p>
 
+<div>
+
+  <p><%= image_tag @item.get_item_image %></p>
+  <p>商品名：<%= @item.name %></p>
+  <p>商品説明：<%= @item.introduction %></p>
+ <p>税込価格：<%= @item.price %></p>
 <p><%= link_to "商品編集", edit_admin_item_path %></p>
 </div>

@@ -6,39 +6,45 @@ layout 'admin'
   end
 
 
-  def create
+def create
     @items = Item.new(item_params)
-    @item.save
+  if @items.save
     redirect_to admin_items_path
+  else
+    render :new
   end
+end
 
-  def index
+def index
    @items = Item.all
 
-  end
-  def show
-  end
+end
 
-  def edit
-      @items = Item.find(params[:id])
+def show
+  @item = Item.find(params[:id])
+  
+end
 
-  end
+def edit
+      @item = Item.find(params[:id])
 
-  def update
-      @amin = admin
-  if @admin.update(item_params)
+end
+
+def update
+  @item = Item.find(params[:id])
+  if @item.update(item_params)
     flash[:notice] = "You have updated user successfully."
       redirect_to  admin_items_path
   else
       render :edit
   end
-  end
+end
 
   private
 
-  def item_params
+def item_params
     params.require(:item).permit(:name, :image, :introduction, :price)
-  end
+end
 
 
 

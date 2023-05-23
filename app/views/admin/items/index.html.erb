@@ -3,9 +3,9 @@
 <% @items.each do |item| %>
 
 <div>
-
+<p> 商品名</p>
    <%= link_to admin_item_path(item.id) do %>
-  商品名：<%= item.name %>
+ <%= item.name %>
 
   <% end %>
 
