@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- 
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions",
   }
@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :new, :create]
     get "orders/confirm" => "orders#confirm"
     get "orders/thanks" => "orders#thanks"
+
+   resources :items, only: [:index, :show]
 
   end
 

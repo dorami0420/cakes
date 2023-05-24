@@ -3,9 +3,10 @@
 
 <div>
 
-  <p><%= image_tag @item.get_item_image %></p>
+  <p><%= image_tag @item.get_item_image(100, 100) %></p>
   <p>商品名：<%= @item.name %></p>
   <p>商品説明：<%= @item.introduction %></p>
- <p>税込価格：<%= @item.price %></p>
+ <p>税込価格(税抜価格): <%= @item.add_tax_sales_price.to_s(:dalimited) %>
+  (<%= @item.price %>)円</p>
 <p><%= link_to "商品編集", edit_admin_item_path %></p>
 </div>

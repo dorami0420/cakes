@@ -1,0 +1,15 @@
+
+
+<p> 商品名一覧</p>
+<div>
+<% @items.each do |item| %>
+<%= link_to public_item_path(item.id) do %>
+    <%= image_tag item.get_item_image(100, 100) %>
+<% end %>
+
+
+ <%= item.name %>
+
+<%= item.price %>
+</div>
+<% end %>
