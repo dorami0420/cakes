@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
-
+has_many :cart_items, dependent: :destroy
 
 def get_item_image(hight, width)
     unless image.attached?
@@ -10,7 +10,9 @@ def get_item_image(hight, width)
     image.variant(resize_to_limit: [hight, width]).processed
 end
 
-
+def with_tax_price
+    (price * 1.1).floor
+end
 
 def add_tax_sales_price
   (self.price * 1.10).round

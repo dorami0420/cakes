@@ -6,5 +6,6 @@ class Customer < ApplicationRecord
 
  # def active_for_authentication?
     #super && (is_deleted == true)
+    has_many :cart_items, dependent: :destroy
   #end
 end

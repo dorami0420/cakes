@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'cart_items/index'
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions",
   }
@@ -18,8 +21,14 @@ Rails.application.routes.draw do
     get "customers/confirm" => "customers#confirm", as: "customer_confirm"
     patch "customers/update" => "customers#cancel", as: "customer_cancel"
 
-    resources :cart_items, only: [:index, :update, :destroy, :create]
+   
     get "cart_items/destroy_all" => "/cart_items#destroy_all"
+     resources :cart_items, only: [:index, :update, :destroy, :create] do
+     member do
+       patch 'increase'
+       patch 'decrease'
+     end
+   end
 
 
     resources :orders, only: [:index, :show, :new, :create]
