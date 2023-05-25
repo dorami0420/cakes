@@ -1,0 +1,26 @@
+<p><%= @customer.last_name + " " + @customer.first_name %>の会員詳細</p>
+
+<p>氏名</p>
+<%= @customer.last_name + " " + @customer.first_name %>
+
+
+<p>カナ</p>
+<%= @customer.last_name_kana + " " + @customer.first_name_kana %>
+
+<p>郵便番号</p>
+<%= @customer.postal_code %>
+
+
+<p>住所</p>
+<%= @customer.address %>
+
+
+<p>電話番号</p>
+<%= @customer.telephone_number %>
+
+
+<p>メールアドレス</p>
+<%= @customer.email %>
+
+
+<%= link_to "編集", edit_admin_customer_path(@customer.id) %>
