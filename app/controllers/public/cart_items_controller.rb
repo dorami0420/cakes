@@ -1,5 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
+
     @cart_items = current_customer.cart_items
     @sum = 0
   end
@@ -9,19 +10,17 @@ class Public::CartItemsController < ApplicationController
     redirect_to public_cart_items_path, notice: 'Successfully added product to your cart'
   end
 
-  def increase
-    @cart_item.increment!(:amount, 1)
-    redirect_to request.referer, notice: 'Successfully updated your cart'
-  end
-
-  def decrease
-    decrease_or_destroy(@cart_item)
-    redirect_to request.referer, notice: 'Successfully updated your cart'
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    flash[:notice] = "You have updated book successfully."
+    redirect_to public_cart_items_path
   end
 
   def destroy
-    @cart_item.destroy
-    redirect_to request.referer, notice: 'Successfully deleted one cart item'
+   cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    redirect_to public_cart_items_path, notice: 'Successfully deleted one cart item'
   end
 
   private
@@ -46,5 +45,11 @@ class Public::CartItemsController < ApplicationController
       cart_item.destroy
     end
 
+
+  end
+
+
+  def cart_item_params
+    params.require(:cart_item).permit(:amount)
   end
 end
