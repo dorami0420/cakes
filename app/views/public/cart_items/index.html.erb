@@ -20,4 +20,11 @@
  <%= link_to "削除", public_cart_item_path(cart_item), method: :delete %>
   <% end %>
   </tbody>
+
+  <p>
+  <%= link_to new_public_order_path, class: "btn btn-outline-secondary btn-block" do %>
+  情報入力に進む
+    <% end %>
+    </p>
+
 </table>

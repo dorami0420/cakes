@@ -1,0 +1,35 @@
+<h1>注文情報入力</h1>
+ <%= form_with model: @oreder,url: public_orders_path, method: :POST do |f| %>
+
+ <p>支払い方法</p>
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+
+<p>お届け先</p>
+
+<%= f.radio_button :address, "current" %>
+<%= f.label :address, "ご自身の住所" %>
+<%= current_customer.postal_code %>
+<%= current_customer.address %>
+<br>
+
+<%= f.radio_button :address, "new" %>
+<%= f.label :address, "新しいお届け先" %>
+
+<p>郵便番号</p>
+  <%= f.text_field :postal_code %>
+
+ <p>住所</p>
+  <%= f.text_area :name %>
+
+ <p>宛名</p>
+  <%= f.text_area :shipping_address %>
+
+   <%= f.submit '確認画面へ進む' %>
+   <%= link_to "退会する",  public_orders_confirm_path %>
+
+<% end %>
+
