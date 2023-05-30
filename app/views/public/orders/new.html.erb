@@ -1,5 +1,5 @@
 <h1>注文情報入力</h1>
- <%= form_with model: @oreder,url: public_orders_path, method: :POST do |f| %>
+ <%= form_with model: @order,url: public_orders_confirm_path, method: :POST do |f| %>
 
  <p>支払い方法</p>
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -10,14 +10,14 @@
 
 <p>お届け先</p>
 
-<%= f.radio_button :address, "current" %>
-<%= f.label :address, "ご自身の住所" %>
+<%= f.radio_button :shipping_address, "current" %>
+<%= f.label :shipping_address, "ご自身の住所" %>
 <%= current_customer.postal_code %>
 <%= current_customer.address %>
 <br>
 
-<%= f.radio_button :address, "new" %>
-<%= f.label :address, "新しいお届け先" %>
+<%= f.radio_button :shipping_address, "new" %>
+<%= f.label :shipping_address, "新しいお届け先" %>
 
 <p>郵便番号</p>
   <%= f.text_field :postal_code %>
@@ -29,7 +29,6 @@
   <%= f.text_area :shipping_address %>
 
    <%= f.submit '確認画面へ進む' %>
-   <%= link_to "退会する",  public_orders_confirm_path %>
 
 <% end %>
 

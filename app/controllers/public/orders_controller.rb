@@ -4,20 +4,16 @@ def new
     @order = Order.new
 end
 
- def update
-      @customer = current_customer
-      if @customer.update(customer_params)
-        flash[:notice] = "You have updated user successfully."
-          redirect_to customers_mypage_path
-    　else
-          render :edit
-      end
-  end
-
+def confirm
+  @order = Order.new(order_params)
+   @order.postal_code = current_customer.postal_code
+  @order.address = current_customer.address
+  @order.name = current_customer.first_name + current_customer.last_name
+end
 private
 
-  def customer_params
-  params.require(:cutomer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number)
+  def order_params
+  params.require(:order).permit(:customer_id,:payment_amount,:shipping_address,:postal_code,:name,:postage,:payment_method)
   end
 
 end

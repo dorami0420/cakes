@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get "customers/confirm" => "customers#confirm", as: "customer_confirm"
     patch "customers/update" => "customers#cancel", as: "customer_cancel"
 
-   
+
     get "cart_items/destroy_all" => "/cart_items#destroy_all"
      resources :cart_items, only: [:index, :update, :destroy, :create] do
      member do
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
 
     resources :orders, only: [:index, :show, :new, :create]
-    get "orders/confirm" => "orders#confirm"
+    post "orders/confirm" => "orders#confirm"
     get "orders/thanks" => "orders#thanks"
 
    resources :items, only: [:index, :show]
