@@ -30,10 +30,10 @@ Rails.application.routes.draw do
      end
    end
 
-
+get "orders/thanks" => "orders#thanks"
     resources :orders, only: [:index, :show, :new, :create]
     post "orders/confirm" => "orders#confirm"
-    get "orders/thanks" => "orders#thanks"
+
 
    resources :items, only: [:index, :show]
 
