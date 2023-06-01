@@ -44,6 +44,7 @@ get "orders/thanks" => "orders#thanks"
     get 'post_images/index'
 
     get "top" => "homes#top", as: "top"
+    get "show" => "homes#show", as: "show"
 
     resources :items, expect: [:destroy]
 
