@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :public do
-    get 'cart_items/index'
-  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions",
   }
@@ -15,6 +11,9 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
+    get "homes/top"
+    get "homes/about"
+    get 'cart_items/index'
     get "customers/information/edit" => "customers#edit", as: "customers_edit"
     get "customers/mypage" => "customers#show", as: "customers_mypage"
     get "customers/update" => "customers#update"
@@ -30,7 +29,7 @@ Rails.application.routes.draw do
      end
    end
 
-get "orders/thanks" => "orders#thanks"
+    get "orders/thanks" => "orders#thanks"
     resources :orders, only: [:index, :show, :new, :create]
     post "orders/confirm" => "orders#confirm"
 

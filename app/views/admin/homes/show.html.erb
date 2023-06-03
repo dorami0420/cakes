@@ -1,7 +1,7 @@
 <tr>
  <td><%#= order.id %></td>
 <td>
-<% order.items.each do |item| %>
+<% @order.items.each do |item| %>
 		[商品ID:<%= item.good.goods_id %>]
 		[商品名：<%= item.name %>]
 		[数量：<%= item.price %>]
@@ -15,4 +15,4 @@
         <td><%= order.shipping_address %></td>
         <td><%= order.payment_method %></td>
         </tr>
-    <% end %>
+    
