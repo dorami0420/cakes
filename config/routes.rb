@@ -19,9 +19,8 @@ Rails.application.routes.draw do
     get "customers/update" => "customers#update"
     get "customers/confirm" => "customers#confirm", as: "customer_confirm"
     patch "customers/update" => "customers#cancel", as: "customer_cancel"
+    delete "cart_items/destroy_all" => "cart_items#destroy_all"
 
-
-    get "cart_items/destroy_all" => "/cart_items#destroy_all"
      resources :cart_items, only: [:index, :update, :destroy, :create] do
      member do
        patch 'increase'
