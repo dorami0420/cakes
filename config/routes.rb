@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions",
   }
@@ -45,7 +46,7 @@ Rails.application.routes.draw do
     get "show" => "homes#show", as: "show"
 
     resources :items, expect: [:destroy]
-
+resources :orders
     resources :customers, expect: [:new, :destroy, :create]
   end
   #get "orders/:id/show" => "/orders/:id#show", as: "orders_show"

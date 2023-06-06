@@ -7,7 +7,7 @@ end
 
 def confirm
   @order = Order.new(order_params)
-
+binding.pry
 
     if params[:order][:address_option] == "0"
        @order.postal_code = current_customer.postal_code
