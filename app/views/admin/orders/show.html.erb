@@ -1,10 +1,25 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+
 <table>
-<tr>
-<td><%= @order.name %></td>
-        <td><%= @order.shipping_address %></td>
-        <td><%= @order.payment_method %></td>
+
+        <p>注文情報</p>
+        <%= @order.created_at %><br>
+        <%= @order.shipping_address + @order.name %><br>
+
+        <%= @order.payment_method %><br>
         </tr>
 
+        <td></td>
+
+<p>注文内容</p>
+  <% @order_d.each do |order| %>
+      <tr>
+         <td><%= order.item.with_tax_price%></td>
+          <td><%= order.subtotal%></td>
+          <% @sum += order.subtotal %>
+      </tr>
+
+        <% end %>
+
+<tr>
 </table>
