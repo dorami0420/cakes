@@ -51,11 +51,12 @@ end
         @orders = current_customer.orders
     end
 
-    def show
-        @order = Order.find(params[:id])
-        @ordered_items = @order.ordered_items
-    end
-
+   
+def show
+  @order = Order.find(params[:id])
+  @order_d = @order.order_details
+@sum = 0
+end
 
 
 private

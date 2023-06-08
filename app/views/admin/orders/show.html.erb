@@ -1,8 +1,8 @@
 <h1>注文履歴詳細</h1>
 
 <table>
-
-        <p>注文情報</p>
+<tr>
+        <h3>注文情報</h3>
         <%= @order.created_at %><br>
         <%= @order.shipping_address + @order.name %><br>
 
@@ -10,16 +10,43 @@
         </tr>
 
         <td></td>
+   
+<h3>注文内容</h3>
 
-<p>注文内容</p>
+   <tr>
+  <th>品名</th>
+  <th>単価(税込)</th>
+  <th>数量</th>
+  <th>小計</th>
+</tr>  
+
   <% @order_d.each do |order| %>
       <tr>
+        <td><%= order.item.name %></td>
          <td><%= order.item.with_tax_price%></td>
+         <td><%= order.amount %></td>
           <td><%= order.subtotal%></td>
           <% @sum += order.subtotal %>
       </tr>
 
         <% end %>
+        </table>
+<table>
+<h3>請求情報</h3>
 
-<tr>
+  <tr>
+       <th>送料</th>
+        <% @order.postage = 800 %>
+       <td><%= @order.postage %></td>
+      </tr>
+     <tr>
+       <th>商品合計</th>
+       <td><%= @order.payment_amount - @order.postage %></td>
+      </tr>
+      <tr>
+        <th>請求金額</th>
+        <td><%= @order.payment_amount %></td>
+      </tr>
+
+
 </table>

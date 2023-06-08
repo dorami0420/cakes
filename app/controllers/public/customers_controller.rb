@@ -22,15 +22,7 @@ def edit
 
 end
 
-  def update
-      @customer = current_customer
-      if @customer.update(customer_params)
-        flash[:notice] = "You have updated user successfully."
-          redirect_to customers_mypage_path
-    　else
-          render :edit
-      end
-  end
+  
 
 private
 

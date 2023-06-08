@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+#root to: 'homes#top'
   
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions",
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions",
   }
+  
+
 
   namespace :public do
     get "homes/top"
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
     get 'cart_items/index'
     get "customers/information/edit" => "customers#edit", as: "customers_edit"
     get "customers/mypage" => "customers#show", as: "customers_mypage"
-    get "customers/update" => "customers#update"
+   # get "customers/update" => "customers#update"
     get "customers/confirm" => "customers#confirm", as: "customer_confirm"
     patch "customers/update" => "customers#cancel", as: "customer_cancel"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
