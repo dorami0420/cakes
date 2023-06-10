@@ -48,11 +48,12 @@ end
 
 
     def index
-        @orders = current_customer.orders
+        @orders = Order.all
     end
 
    
 def show
+  
   @order = Order.find(params[:id])
   @order_d = @order.order_details
 @sum = 0
