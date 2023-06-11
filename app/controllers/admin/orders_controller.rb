@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
-
+layout 'admin'
 def show
-  
+  @customer = current_customer
   @order = Order.find(params[:id])
   @order_d = @order.order_details
 @sum = 0
