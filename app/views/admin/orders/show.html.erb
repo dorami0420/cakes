@@ -23,29 +23,28 @@
     <th>支払い方法</th>
     <td><%= @order.payment_method %></td>
 </tr>
-
-     
-<tr>
-  <th>商品名</th>
-  <th>単価(税込)</th>
-  <th>数量</th>
-  <th>小計</th>
-</tr>  
+</table>
+<table>  
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </tr>  
 
   <% @order_d.each do |order| %>
-<tr>
-        <td><%= order.item.name %></td>
-         <td><%= order.item.with_tax_price%></td>
-         <td><%= order.amount %></td>
-          <td><%= order.subtotal%></td>
-          <% @sum += order.subtotal %>
-</tr>
-
-        <% end %>
+    <tr>
+      <td><%= order.item.name %></td>
+      <td><%= order.item.with_tax_price%></td>
+      <td><%= order.amount %></td>
+      <td><%= order.subtotal%></td>
+      <td><% @sum += order.subtotal %></td>
+    </tr>
+  <% end %>
         
+</table> 
 
-
-  
+ <table> 
 <tr>
       <th>商品合計</th>
       <td><%= @order.payment_amount - @order.postage %>円</td>

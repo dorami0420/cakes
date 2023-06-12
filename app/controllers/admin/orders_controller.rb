@@ -1,15 +1,12 @@
 class Admin::OrdersController < ApplicationController
 layout 'admin'
-def show
-  @customer = current_customer
-  @order = Order.find(params[:id])
-  @order_d = @order.order_details
-@sum = 0
-end
+  def show
+    @order = Order.find(params[:id])
+    @order_d = @order.order_details
+    @sum = 0
+  end
 
-def with_tax_price
-    (price * 1.1).floor
-end
+
 
  private
 
