@@ -1,6 +1,7 @@
+<html>
 <h4>注文情報確認</h4><tr>
  <%= form_with model: @order, url: public_orders_path, method: :post, local: true do |f| %>
-<table>
+<table border="1" style="border-collapse: collapse">
   <th>商品名</th>
   <th>単価(税込)</th>
   <th>数量</th>
@@ -25,7 +26,7 @@
      <% end %>
 </table>
 
-  <table>
+  <table border="1" style="border-collapse: collapse">
      <tr>
        <th>送料</th>
         <% @order.postage = 800 %>
@@ -66,3 +67,4 @@
 
   <%= f.submit "注文を確定する", class: "btn btn-success" %>
  <% end %>
+ </html>

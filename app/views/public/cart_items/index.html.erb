@@ -1,16 +1,23 @@
+<html>
 <h1>Shopping Cart</h1>
 <%= button_to "全て削除",  public_cart_items_destroy_all_path, method: :delete %>
-<table>
-  <thead>
+<tbody>
+  <table border="1" style="border-collapse: collapse">
+  <tr>
+      <th>商品名</th>
       <th>単価(税込)</th>
+      <th>数量</th>
       <th>小計</th>
-  </thead>
-  <tbody>
+  </tr>
+  
+  
+    
   <% @cart_items.each do |cart_item| %>
       <tr>
-        <%= image_tag cart_item.item.get_item_image(100, 100) %>
-         <td><%= cart_item.item.with_tax_price%></td>
-          <td><%= cart_item.subtotal%></td>
+        <td><%= image_tag cart_item.item.get_item_image(100, 100) %><%= cart_item.item.name %></td>
+         <td><%= cart_item.item.with_tax_price %></td>
+         <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal %></td>
           <% @sum +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
       </tr>
 
@@ -32,3 +39,4 @@
 </p>
 
 </table>
+</html>

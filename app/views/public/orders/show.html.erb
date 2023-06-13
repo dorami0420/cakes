@@ -1,23 +1,36 @@
+<html>
+
 <h1>注文履歴詳細</h1>
 
-<table>
-<tr>
-        <h3>注文情報</h3>
-        <%= @order.created_at %><br>
-        <%= @order.shipping_address + @order.name %><br>
 
-        <%= @order.payment_method %><br>
+<h3>注文情報</h3>
+
+
+    <table border="1" style="border-collapse: collapse">
+        <tr>
+          <td>注文日</td>
+        <td><%= @order.created_at %></td>
+        </tr>
+        <tr>
+        <td>配送先</td>
+        <td><%= @order.shipping_address + @order.name %></td>
+        </tr>
+        <tr>
+        <td>支払い方法</td>
+        <td><%= @order.payment_method %></td>
         </tr>
 
-        <td></td>
+     </table> 
    
 <h3>注文内容</h3>
 
+<table border="1" style="border-collapse: collapse">
    <tr>
   <th>品名</th>
   <th>単価(税込)</th>
-  <th>数量</th>
+  <th>個数</th>
   <th>小計</th>
+  <th>合計</th>
 </tr>  
 
   <% @order_d.each do |order| %>
@@ -26,23 +39,24 @@
          <td><%= order.item.with_tax_price%></td>
          <td><%= order.amount %></td>
           <td><%= order.subtotal%></td>
-          <% @sum += order.subtotal %>
+          <td><%= @sum += order.subtotal %></td>
       </tr>
 
         <% end %>
         </table>
-<table>
-<h3>請求情報</h3>
+        
 
-  <tr>
-       <th>送料</th>
-        <% @order.postage = 800 %>
-       <td><%= @order.postage %></td>
-      </tr>
-     <tr>
-       <th>商品合計</th>
+<h3>請求情報</h3>
+<table border="1" style="border-collapse: collapse">
+   <tr>
+       <td>商品合計</td>
        <td><%= @order.payment_amount - @order.postage %></td>
+    </tr>
+    <tr>
+       <td>送料</td>
+        <td><%= @order.postage = 800 %></td>
       </tr>
+    
       <tr>
         <th>請求金額</th>
         <td><%= @order.payment_amount %></td>
@@ -50,3 +64,4 @@
 
 
 </table>
+</html>
