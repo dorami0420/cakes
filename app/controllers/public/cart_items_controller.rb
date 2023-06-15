@@ -7,26 +7,26 @@ class Public::CartItemsController < ApplicationController
 
   def create
     increase_or_create(params[:cart_item][:item_id])
-    redirect_to public_cart_items_path, notice: 'Successfully added product to your cart'
+    redirect_to cart_items_path, notice: 'Successfully added product to your cart'
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
     flash[:notice] = "You have updated book successfully."
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
   end
 
   def destroy
    cart_item = CartItem.find(params[:id])
     cart_item.destroy
-    redirect_to public_cart_items_path, notice: 'Successfully deleted one cart item'
+    redirect_to cart_items_path, notice: 'Successfully deleted one cart item'
   end
 
   def destroy_all
   cart_items = current_customer.cart_items
   cart_items.destroy_all
-  redirect_to public_cart_items_path
+  redirect_to cart_items_path
   end
 
   private

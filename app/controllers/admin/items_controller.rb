@@ -2,14 +2,14 @@ class Admin::ItemsController < ApplicationController
 layout 'admin'
 
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
 
 def create
-    @items = Item.new(item_params)
-  if @items.save
-    redirect_to admin_items_path
+    @item = Item.new(item_params)
+  if @item.save
+    redirect_to admin_item_path(@item.id)
   else
     render :new
   end

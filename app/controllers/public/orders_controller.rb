@@ -2,6 +2,9 @@ class Public::OrdersController < ApplicationController
  before_action :authenticate_customer!
 def new
     @order = Order.new
+    if current_customer.cart_items.count == 0
+      redirect_to cart_items_path
+    end
 
 end
 
@@ -40,7 +43,7 @@ def create
         end
 
         current_customer.cart_items.destroy_all
-        redirect_to  public_orders_thanks_path
+        redirect_to orders_thanks_path
 end
 
     def thanks
@@ -48,7 +51,8 @@ end
 
 
     def index
-        @orders = Order.all
+      @customer = current_customer
+        @orders = @customer.orders
     end
 
    

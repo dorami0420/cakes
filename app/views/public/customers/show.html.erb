@@ -1,7 +1,7 @@
 <html>
   <body>
   <h1>登録情報</h1>
-  <%= link_to "Edit", edit_customer_registration_path(@customer.id) %>
+  <%= link_to "Edit", customers_edit_path %>
   
   <table border="1" style="border-collapse: collapse">
 <tr>
@@ -34,6 +34,10 @@
 <td><%= @customer.email %></td>
 </tr>
 
+ <p><%= link_to "一覧を見る", orders_path(@customer.id) %>
+  
+    </p>
+    
 </table>
  </body>
 </html>

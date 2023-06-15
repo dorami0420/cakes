@@ -1,6 +1,6 @@
 <html>
 <h4>注文情報確認</h4><tr>
- <%= form_with model: @order, url: public_orders_path, method: :post, local: true do |f| %>
+ <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
 <table border="1" style="border-collapse: collapse">
   <th>商品名</th>
   <th>単価(税込)</th>

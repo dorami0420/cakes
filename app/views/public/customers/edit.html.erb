@@ -1,36 +1,36 @@
 <h2>プロフィール編集</h2>
-<%= form_with model: @customer,url: customer_registration_path, method: :PATCH do |f| %>
+<%= form_with model: @customer,url: customers_update_path, method: :PATCH do |f| %>
   <label for="inputLast_name">氏名</label>
-  <%= f.text_field :Last_name, autofocus: true, id:"inputLast_name", placeholder:"Last_name"%>
+  <%= f.text_field :last_name, autofocus: true, id:"inputLast_name", placeholder:"Last_name"%>
 
   <label for="inputFirst_name"></label>
-  <%= f.text_field :First_name, autofocus: true, id:"inputFirst_name", placeholder:"First_name"%><br>
+  <%= f.text_field :first_name, autofocus: true, id:"inputFirst_name", placeholder:"First_name"%><br>
 
   <label for="inputLast_name_kana">フリガナ</label>
-  <%= f.text_field :Last_name_kana, autofocus: true, id:"inputLast_name_kana", placeholder:"Last_name_kana"%>
+  <%= f.text_field :last_name_kana, autofocus: true, id:"inputLast_name_kana", placeholder:"Last_name_kana"%>
 
   <label for="inputFirst_name_kana"></label>
-  <%= f.text_field :First_name_kana, autofocus: true, id:"inputFirst_name_kana", placeholder:"First_name_kana"%><br>
+  <%= f.text_field :first_name_kana, autofocus: true, id:"inputFirst_name_kana", placeholder:"First_name_kana"%><br>
 
 
   <label for="inputPostal_code">郵便番号</label>
-  <%= f.text_field :Postal_code, autofocus: true, id:"inputPostal_code", placeholder:"Postal_code"%><br>
+  <%= f.text_field :postal_code, autofocus: true, id:"inputPostal_code", placeholder:"Postal_code"%><br>
 
   <label for="inputAddress">住所</label>
-  <%= f.text_field :Address, autofocus: true, id:"inputAddress", placeholder:"Address"%><br>
+  <%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"Address"%><br>
 
   <label for="inputTelephone_number">電話番号</label>
-  <%= f.text_field :Telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"Telephone_number"%><br>
+  <%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"Telephone_number"%><br>
 
     <label for="inputEmail">メールアドレス</label>
     
-  <%= f.text_field :Email, autofocus: true, id:"inputEmail", placeholder:"Email"%><br>
+  <%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"Email"%><br>
 
 
   <%= f.submit "変更を保存" %>
 
   <div class="text-center font-bold text-red-500">
-    <%= link_to "退会する",  public_customer_confirm_path %>
+    <%= link_to "退会する", customer_confirm_path %>
   </div>
 
 <% end %>
